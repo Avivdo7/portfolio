@@ -6,23 +6,24 @@ import { SiMinutemailer } from "react-icons/si";
 import cvFile from "../assets/AvivDoronResume.pdf";
 
 const StickyNavbar = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const controls = useAnimation();
 
   useEffect(() => {
-    let prevScrollPos = window.pageYOffset;
-
+    let prevScrollPos = window.scrollY;
+  
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      const isScrollingUp = prevScrollPos > currentScrollPos;
-
-      setIsVisible(isScrollingUp || currentScrollPos < 10);
+      const currentScrollPos = window.scrollY;
+      const isVisible = currentScrollPos < 10 || prevScrollPos > currentScrollPos || currentScrollPos > prevScrollPos;
+  
+      setIsVisible(isVisible);
       prevScrollPos = currentScrollPos;
     };
-
+  
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
 
   useEffect(() => {
     controls.start(isVisible ? "visible" : "hidden");
