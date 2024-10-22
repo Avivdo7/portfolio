@@ -1,4 +1,5 @@
 import EV from "../assets/projects/EV.png";
+import Pathfinder from "../assets/projects/pfv.png";
 import Pacman from "../assets/projects/pacman.png";
 import Sudoku from "../assets/projects/sudoku.png";
 
@@ -17,6 +18,13 @@ microservices, involving the development of over 300+ E2E tests.`,
 ];
 
 export const PROJECTS = [
+  {
+    title: "Pathfinder-Visualizer",
+    image: Pathfinder,
+    description:
+      "A dynamic pathfinder visualizer that demonstrates various pathfinding algorithms like A* and Dijkstra in real-time. Users can interact with the grid, set start and end points, and observe the algorithm's progress in finding the optimal path.",
+    technologies: ["HTML", "Tailwind", "React", "Node.js"],
+  },
   {
     title: "FullStack EV Catalog",
     image: EV,
