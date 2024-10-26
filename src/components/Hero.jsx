@@ -1,6 +1,8 @@
 import { HERO_CONTENT } from "../constants";
 import profilePic from "../assets/me.png";
 import { motion } from "framer-motion";
+import { FaDownload } from "react-icons/fa";
+import cvFile from "../assets/AvivDoronResume.pdf";
 
 const container = (initPos, endPos, duration, delay) => ({
   hidden: { x: initPos, opacity: 0 },
@@ -14,8 +16,8 @@ const container = (initPos, endPos, duration, delay) => ({
 const Hero = () => {
   return (
     <div className="border-b border-neutral-900 pb-4 lg:mb-35">
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-1/2">
+      <div className="flex flex-wrap pt-4">
+        <div className="w-full lg:w-3/5">
           <div className="flex flex-col items-center lg:items-start">
             <motion.h1
               variants={container(-100, 0, 0.5, 0)}
@@ -43,16 +45,30 @@ const Hero = () => {
             </motion.p>
           </div>
         </div>
-        <div className="w-full lg:w-1/2 lg:p-8">
+        <div className="w-full lg:w-1/3 lg:p-8">
           <div className="flex justify-center">
             <motion.img
-            className="rounded-full object-cover"
+              className="rounded-full object-cover"
               variants={container(100, 0, 1, 1.05)}
               initial="hidden"
               animate="visible"
               src={profilePic}
               alt="Aviv Doron"
             />
+          </div>
+          <div className="flex justify-center pt-8">
+            <motion.a
+              whileHover={{ scale: 1.25 }}
+              variants={container(100, 0, 1, 1.05)}
+              initial="hidden"
+              animate="visible"
+              href={cvFile}
+              download="AvivDoronResume.pdf"
+              className="flex items-center gap-2 text-white hover:text-cyan-300 transition-colors text-2xl"
+            >
+              <span>Download CV</span>
+              <FaDownload />
+            </motion.a>
           </div>
         </div>
       </div>
